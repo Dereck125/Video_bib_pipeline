@@ -1,0 +1,6 @@
+agentbible/
+.env
+*.gguf
+*json
+tts_outputs/
+output/

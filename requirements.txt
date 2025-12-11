@@ -1,0 +1,10 @@
+python-dotenv
+mistralai
+elevenlabs
+diffusers
+accelerate
+gguf
+playwright
+python-telegram-bot
+transformers
+#pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu130

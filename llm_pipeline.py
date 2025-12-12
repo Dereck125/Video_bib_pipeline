@@ -195,9 +195,9 @@ def procesar_capitulo(
     SYSTEM_PROMPT_SCRIPT_DOCTOR,
     SYSTEM_PROMPT_ELEVEN_V3,
     texto_capitulo: str,
-    model_text: str = "mistral-medium-latest",
-    model_script: str = "mistral-medium-latest",
-    model_refiner: str = "mistral-small-latest",
+    model_text: str = "mistral-large-latest",
+    model_script: str = "mistral-large-latest",
+    model_refiner: str = "mistral-medium-latest",
     model_voice: str = "mistral-small-latest",
 ) -> List[Dict[str, Any]]:
     """

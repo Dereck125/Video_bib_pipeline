@@ -217,7 +217,7 @@ def run_imagenes_from_json(libro: str, capitulo: int, output_root: str = "output
         }
 
     pipeline = cargar_zimage_pipeline()
-    generar_imagenes_desde_json(pipeline, str(json_path), output_root=output_root)
+    generar_imagenes_desde_json(pipeline, str(json_path), output_root=output_root, libro=libro, capitulo=capitulo)
 
     if should_cancel():
         print(f"=== [IMG] Cancelado después de generar algunas imágenes para {libro} {capitulo} ===")

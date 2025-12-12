@@ -72,7 +72,7 @@ def generar_imagen(pipeline, prompt: str, carpeta: str | Path, nombre: str):
     gc.collect()
 
 
-def generar_imagenes_desde_json(pipeline, json_path: str | Path, output_root: str = "output"):
+def generar_imagenes_desde_json(pipeline, json_path: str | Path, output_root: str = "output" , libro: str | None = None, capitulo: int | None = None):
     json_path = Path(json_path)
     with open(json_path, "r", encoding="utf-8") as f:
         data = json.load(f)
@@ -95,7 +95,9 @@ def generar_imagenes_desde_json(pipeline, json_path: str | Path, output_root: st
 
         if tipo in ["HISTORIA", "CURIOSIDAD"]:
             frames = bloque["secuencia_visual"]
-            carpeta = Path(output_root) / tipo
+            libro_slug = (libro or "libro").lower()
+            cap_slug = f"cap_{capitulo}" if capitulo is not None else "cap"
+            carpeta = Path(output_root) / libro_slug / cap_slug / tipo
 
             for frame_name, prompt in frames.items():
                 if should_cancel():
@@ -114,7 +116,7 @@ def generar_imagenes_desde_json(pipeline, json_path: str | Path, output_root: st
                 cancelado = True
                 break
 
-            carpeta = Path(output_root) / "ORACION"
+            carpeta = Path(output_root) / libro_slug / cap_slug / "ORACION"
             # Evita overwrite si hubiera varias ORACION:
             nombre = f"oracion_{i}.png"
             generar_imagen(pipeline, bloque["prompt_imagen"], carpeta, nombre)

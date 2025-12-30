@@ -4,3 +4,4 @@ agentbible/
 *json
 tts_outputs/
 output/
+__pycache__/
